@@ -1,0 +1,47 @@
+import random
+
+choice1 = ["Rock", "Paper", "Scissor"]
+dit = {1: 'Rock', 2: 'Paper', 3: 'Scissor'}
+
+while True:
+    print("Rock Paper Scissor Game")
+    you_win = 0
+    computer_win = 0
+
+    for i in range(1, 6):
+        print("Round", i, "start")
+        print("Please select any option-")
+        print("1.Rock", "2.Paper", "3.Scissor", sep="\n")
+        your_choice = int(input())
+
+        if your_choice < 1 or your_choice > 3:
+            print("Invalid choice-")
+            break
+        ds = dit[your_choice]
+        print(f"you have selected {ds}")
+
+        computer_choice = random.choice(choice1)
+        print(f"Computer has selected {computer_choice}")
+
+        if ds == computer_choice:
+            you_win +=1
+            computer_win +=1
+            print("This game is drawn")
+        elif (ds == "Paper" and computer_choice == "Rock") or (ds == "Scissor" and computer_choice == "Paper") or (ds == "Rock" and computer_choice == "Scissor"):
+            print("You win this Round!")
+            you_win +=2
+        else:
+            print("Computer wins this Round!")
+            computer_win += 2
+    if you_win > computer_win:
+        print(f"You won the game!. Your score is {you_win}. Computer's score is {computer_win}")
+    elif you_win < computer_win:
+        print(f"Computer win the game! Your score is {you_win}. Computer's score is {computer_win}")
+    else:
+        print(f"Game is draw! Your score is {you_win}. Computer's score is {computer_win}")
+    user_choice= input("Want to play again!(y/n)-")
+    if user_choice == 'y':
+        continue
+    else:
+        break
+
